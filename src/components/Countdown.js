@@ -5,25 +5,25 @@ import React, {useEffect, useState} from 'react'
 
 
 export default function Countdown() {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  useEffect(() =>{
-    let interval;
-    if(isRunning){
-      interval = setInterval(() =>{
-        setTime(prevTime=>prevTime+1);
-      },1000);
-    }
-  return ()=>clearInterval(interval); 
-},[isRunning]);
+  //useState let us store the number of seconds remaining
+  const [seconds, setSeconds] = useState(10);
+ 
+  //useEffect hook to update the seconds
+  useEffect(()=>{
+    const intervalId = setInterval(()=>{
+      setSeconds(seconds-1);
+    },1000);
 
-  return (
-   
-    
-  <div className="container">
-    <p>Time:{time}</p>
-    <div className="btn btn-primary" onClick={()=>setIsRunning(!isRunning)}>{isRunning? 'Pause':'Start'}</div>
+ return ()=>{
+  clearInterval(intervalId);
+ };
+  },[seconds]);
 
-  </div>
-  )
+ return(
+  <div className="container-mt-5">
+  <h1 className="display-4">{seconds}</h1>
+ </div>
+ )
+ 
+  
 }

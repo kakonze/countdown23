@@ -5,6 +5,7 @@ import Countdown from './components/Countdown';
 import Currenttime from './components/Currenttime';
 import './App.css';
 import { Fragment } from 'react';
+import Timer from './components/Timer';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Fragment>
       <AppHeader/>
       <Currenttime/>
+      <Timer/>
       <Countdown/>
        <AppFooter/>
     </Fragment>
